@@ -49,7 +49,9 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <Report Include="SalesbyPerson.rdl" />
     <Report Include="SalesByTerritory.rdl" />
+    <Report Include="SalesOrderDetail.rdl" />
     <Report Include="SalesSummarybyYear.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

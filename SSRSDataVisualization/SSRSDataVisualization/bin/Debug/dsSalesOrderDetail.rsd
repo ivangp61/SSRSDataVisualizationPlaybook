@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>WiredBrainCoffee</DataSourceReference>
+      <CommandText>SELECT TOP 1000	CONCAT(spm.LastName,', ',spm.FirstName) AS SalesManager,
+		CONCAT(sp.LastName,', ',sp.FirstName) AS SalesPerson,
+		spl.LevelName AS JobTitle,
+		so.SalesAmount AS SalesAmount,
+		so.SalesDate AS SalesDate,
+		sos.StatusName AS SalesStatus,
+		so.Id AS OrderId
+FROM Sales.SalesOrder so
+	INNER JOIN Sales.SalesPerson sp ON so.SalesPerson = sp.Id
+	INNER JOIN Sales.SalesPersonLevel spl ON spl.Id = sp.LevelId
+	INNER JOIN Sales.SalesPerson spm ON spm.Id = sp.ManagerId
+	INNER JOIN Sales.SalesOrderStatus sos ON sos.Id = so.SalesOrderStatus</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="SalesManager">
+        <DataField>SalesManager</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SalesPerson">
+        <DataField>SalesPerson</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="JobTitle">
+        <DataField>JobTitle</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="SalesAmount">
+        <DataField>SalesAmount</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SalesDate">
+        <DataField>SalesDate</DataField>
+        <rd:TypeName>System.DateTime</rd:TypeName>
+      </Field>
+      <Field Name="SalesStatus">
+        <DataField>SalesStatus</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="OrderId">
+        <DataField>OrderId</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

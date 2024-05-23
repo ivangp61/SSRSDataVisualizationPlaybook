@@ -49,6 +49,9 @@
     <Reports>@(Report)</Reports>
   </PropertyGroup>
   <ItemGroup>
+    <DataSet Include="dsSalesOrderDetail.rsd" />
+    <DataSet Include="dsSalesPerson.rsd" />
+    <DataSet Include="dsSalesPersonName.rsd" />
     <DataSet Include="dsSalesSummary.rsd" />
     <DataSet Include="dsSalesTerritory.rsd" />
     <DataSet Include="dsSalesYear.rsd" />
@@ -57,7 +60,9 @@
     <DataSource Include="WiredBrainCoffee.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="SalesByPerson.rdl" />
     <Report Include="SalesByTerritory.rdl" />
+    <Report Include="SalesOrderDetail.rdl" />
     <Report Include="SalesSummarybyYear.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />
