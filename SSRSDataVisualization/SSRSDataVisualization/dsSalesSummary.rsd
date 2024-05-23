@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>WiredBrainCoffee</DataSourceReference>
+      <CommandText>;WITH BaseSalesCte AS (
+SELECT	SUM(so.SalesAmount) AS SalesAmount,
+		YEAR(so.SalesDate) AS SalesDate
+FROM Sales.SalesOrder so
+GROUP BY YEAR(so.SalesDate))
+SELECT	SalesAmount,
+		SalesDate,
+		SalesAmount - LAG(SalesAmount) OVER (ORDER BY SalesDate) AS PreviousYearDiff
+FROM BaseSalesCte</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="SalesAmount">
+        <DataField>SalesAmount</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SalesDate">
+        <DataField>SalesDate</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="PreviousYearDiff">
+        <DataField>PreviousYearDiff</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
