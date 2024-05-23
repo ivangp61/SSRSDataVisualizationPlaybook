@@ -50,11 +50,14 @@
   </PropertyGroup>
   <ItemGroup>
     <DataSet Include="dsSalesSummary.rsd" />
+    <DataSet Include="dsSalesTerritory.rsd" />
+    <DataSet Include="dsSalesYear.rsd" />
   </ItemGroup>
   <ItemGroup>
     <DataSource Include="WiredBrainCoffee.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="SalesByTerritory.rdl" />
     <Report Include="SalesSummarybyYear.rdl" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Reporting Services\Microsoft.ReportingServices.MSBuilder.targets" />

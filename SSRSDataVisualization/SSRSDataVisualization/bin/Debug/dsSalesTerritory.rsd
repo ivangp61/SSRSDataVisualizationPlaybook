@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>WiredBrainCoffee</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@SalesYear">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT	SUM(so.SalesAmount) AS SalesAmount
+		,YEAR(so.SalesDate) AS SalesYear,
+		st.TerritoryName 
+FROM Sales.SalesOrder so
+JOIN Sales.SalesTerritory st ON so.SalesTerritory = st.Id
+WHERE YEAR(so.SalesDate) IN (@SalesYear)
+GROUP BY YEAR(so.SalesDate), st.TerritoryName </CommandText>
+    </Query>
+    <Fields>
+      <Field Name="SalesAmount">
+        <DataField>SalesAmount</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="SalesYear">
+        <DataField>SalesYear</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TerritoryName">
+        <DataField>TerritoryName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
